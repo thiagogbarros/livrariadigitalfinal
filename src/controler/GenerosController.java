@@ -17,24 +17,25 @@ public class GenerosController {
 		em = emf.createEntityManager();
 	}
 	
-	public void salvar(Genero genero) {
+	public void Salvar(Genero genero) {
 		em.getTransaction().begin();
 		em.merge(genero);
 		em.getTransaction().commit();
 		emf.close();
 	}
 	
-	public void remover(Genero genero) {
+	public void Deletar() {
 		em.getTransaction().begin();
-		Query q = em.createNativeQuery("delete aluno from aluno where nome = "+genero.getNome());
+		Query q = em.createNativeQuery("delete from genero where nome = '"+GeneroView.Deletar()+"'");
 		q.executeUpdate();
 		em.getTransaction().commit();
 		emf.close();
 	}
 	
-	public void CriaGenero() {
+	public void Criar() {
 		Genero genero = new Genero();
-		genero.setNome(GeneroView.Cadastro());
-		this.salvar(genero);
+		genero.setNome(GeneroView.Criar());
+		this.Salvar(genero);
 	}
+	
 }
