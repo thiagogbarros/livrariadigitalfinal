@@ -6,6 +6,7 @@ public class Main {
 		GenerosController gcontroller = new GenerosController();
 		//gcontroller.Criar();
 		//gcontroller.Deletar();
+		//gcontroller.Alterar();
 
 	}
 

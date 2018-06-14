@@ -16,4 +16,18 @@ public class GeneroView {
 		String nome = sc.nextLine();
 		return(nome);
 	}
+	
+	public static String Alterar(int parte) {
+		Scanner sc = new Scanner(System.in);
+		if(parte == 1) {
+			System.out.println("Digite o nome do genero que deseja ser alterado");
+			String nome = sc.nextLine();
+			return(nome);
+		}else {
+			System.out.println("Digite o nome do genero que deseja alterar");
+			String nome = sc.nextLine();
+			return(nome);
+		
+		}
+	}
 }
