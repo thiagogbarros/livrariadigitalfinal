@@ -19,7 +19,7 @@ public class GenerosController {
 	
 	public void Salvar(Genero genero) {
 		em.getTransaction().begin();
-		em.merge(genero);
+		em.persist(genero);
 		em.getTransaction().commit();
 		emf.close();
 	}
@@ -42,9 +42,11 @@ public class GenerosController {
 	public void Alterar() {
 		em.getTransaction().begin();
 		Query q = em.createNativeQuery("select id from genero where nome = '"+GeneroView.Alterar(1)+"'");
-		q = em.createNativeQuery("select genero from genero where id = '"+q.getSingleResult() +"'");
-		q = em.createNativeQuery("update genero set 'nome' = '"+GeneroView.Alterar(2) +"' where id = '"+q.getSingleResult() +"'");
-		q.executeUpdate();
+		int id = (int) q.getSingleResult();
+		Genero encontrado = new Genero();
+		encontrado.setId(id);
+		encontrado.setNome(GeneroView.Alterar(2));
+		em.merge(encontrado);
 		em.getTransaction().commit();
 		emf.close();
 	}
