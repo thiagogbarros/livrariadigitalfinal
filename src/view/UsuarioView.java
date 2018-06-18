@@ -10,16 +10,17 @@ public class UsuarioView {
 		Usuario usuario = new Usuario();
 		System.out.println("Digite o nome do usuario a ser cadastrado");
 		usuario.setNome(sc.nextLine());
+		System.out.printf("Digite o endereço do usuario a ser cadastrado \n");
+		usuario.setEndereco(sc.nextLine());
         System.out.println("Digite o cpf do usuario a ser cadastrado");
 		usuario.setCpf(sc.nextInt());
 		System.out.println("Digite o cep do usuario a ser cadastrado");
 		usuario.setCep(sc.nextInt());
 		System.out.println("Digite o telefone do usuario a ser cadastrado");
 		usuario.setTelefone(sc.nextInt());
+
 		System.out.println("Digite o idade do usuario a ser cadastrado");
 		usuario.setIdade(sc.nextInt());
-		System.out.println("Digite o endereço do usuario a ser cadastrado");
-		usuario.setEndereco(sc.nextLine());
 		return(usuario);
 	}
 	
