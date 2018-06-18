@@ -16,15 +16,6 @@ public class EditoraView {
 		System.out.println("TELEFONE:");
 		editora.setTelefone(sc.nextLine());
 		return(editora);
-		/*
-		System.out.println("EDITORA: criando... \n");	//TITULO DA TELA
-		Scanner sc = new Scanner(System.in);
-		Editora editora = new Editora();
-		System.out.println("Digite o nome da editora a ser cadastrada");
-		editora.setNome(sc.nextLine());
-		System.out.println("Digite o telefone da editora a ser cadastrada");
-		editora.setTelefone(sc.nextLine());
-		return(editora);*/
 	}
 	public static int Deletar() {
 		System.out.println("EDITORA: deletando...");	//TITULO DA TELA
@@ -48,12 +39,6 @@ public class EditoraView {
 			System.out.println("NOVO TELEFONE:");
 			editora.setTelefone(sc.nextLine());
 			return(editora);
-			/*
-			System.out.println("Digite o nome da editora a ser cadastrada");
-			editora.setNome(sc.nextLine());
-			System.out.println("Digite o telefone da editora a ser cadastrada \n");
-			editora.setTelefone(sc.nextLine());
-			return(editora);*/
 		
 		}
 	}

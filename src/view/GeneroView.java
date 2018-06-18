@@ -20,16 +20,18 @@ public class GeneroView {
 		return(id);
 	}
 	
-	public static String Alterar(int parte) {
+	public static Genero Alterar(int parte) {
 		Scanner sc = new Scanner(System.in);
+		Genero genero = new Genero();
 		if(parte == 1) {
-			System.out.println("Digite o nome do gênero que deseja ser alterado");
-			String nome = sc.nextLine();
-			return(nome);
+			System.out.println("GENERO: alterando dados... \n");	//TITULO DA TELA
+			System.out.println("Digite o nome do genero que deseja ser alterado");
+			genero.setNome(sc.nextLine());
+			return(genero);
 		}else {
-			System.out.println("Digite o nome do gênero que deseja alterar");
-			String nome = sc.nextLine();
-			return(nome);
+			System.out.println("NOVO NOME:");
+			genero.setNome(sc.nextLine());
+			return(genero);
 		
 		}
 	}

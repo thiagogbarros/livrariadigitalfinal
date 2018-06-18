@@ -10,15 +10,15 @@ import javax.persistence.Query;
 
 
 
-import model.Genero;
-import view.GeneroView;
+import model.Autor;
+import view.AutorView;
 
-public class GenerosController {
+public class AutoresController {
 	@PersistenceContext
 	EntityManagerFactory emf;
 	EntityManager em;
 	
-	public GenerosController() {
+	public AutoresController() {
 		emf = Persistence.createEntityManagerFactory("genero");
 		em = emf.createEntityManager();
 	}
@@ -26,55 +26,55 @@ public class GenerosController {
 	public void Deletar() {
 		em.getTransaction().begin();
 		try {
-			//Query q = em.createNativeQuery("select id from genero where nome = '"+GeneroView.Deletar()+"'");
-			//Genero genero = em.find(Genero.class, q.getSingleResult());
-			Genero genero = em.find(Genero.class, GeneroView.Deletar());
+			//Query q = em.createNativeQuery("select id from genero where nome = '"+AutorView.Deletar()+"'");
+			//Autor genero = em.find(Autor.class, q.getSingleResult());
+			Autor genero = em.find(Autor.class, AutorView.Deletar());
 			em.remove(genero);
 			em.getTransaction().commit();
 			emf.close();
-			GeneroView.Mensagens("deletado");
+			AutorView.Mensagens("deletado");
 		}catch(Exception e) {
-			GeneroView.Mensagens("naoEncontrado");
+			AutorView.Mensagens("naoEncontrado");
 		}
 
 	}
 	
 	public void Criar() {
-		Genero genero = GeneroView.Criar();
+		Autor autor = AutorView.Criar();
 		em.getTransaction().begin();
-		em.persist(genero);
+		em.persist(autor);
 		em.getTransaction().commit();
 		emf.close();
-		GeneroView.Mensagens("cadastrado");
+		AutorView.Mensagens("cadastrado");
 	}
 	
 	public void Alterar() {
 		em.getTransaction().begin();
-		Query q = em.createNativeQuery("select id from genero where nome = '"+GeneroView.Alterar(1).getNome()+"'");
+		Query q = em.createNativeQuery("select id from autor where nome = '"+AutorView.Alterar(1).getNome()+"'");
 		try {
 			int idEncontrado = (int) q.getSingleResult();
-			Genero encontrado = GeneroView.Alterar(2);
+			Autor encontrado = AutorView.Alterar(2);
 			encontrado.setId(idEncontrado);
 			em.merge(encontrado);
 			em.getTransaction().commit();
 			emf.close();
-			GeneroView.Mensagens("alterado");
+			AutorView.Mensagens("alterado");
 		}catch(Exception e) {
-			GeneroView.Mensagens("naoEncontrado");
+			AutorView.Mensagens("naoEncontrado");
 		}
 	}
 	
 	public void Consultar() {
 		em.getTransaction().begin();  
-		Query query = em.createQuery("select g from Genero g");
-		List<Genero> generos = query.getResultList();
+		Query query = em.createQuery("select g from Autor g");
+		List<Autor> autores = query.getResultList();
 		em.getTransaction().commit();
 		emf.close();
-		if(generos.isEmpty()) {
-			GeneroView.Mensagens("naoCadastrado");
+		if(autores.isEmpty()) {
+			AutorView.Mensagens("naoCadastrado");
 		}else {
-			for (int i = 0;i < generos.size(); i++) {
-				GeneroView.Consultar(generos.get(i));
+			for (int i = 0;i < autores.size(); i++) {
+				AutorView.Consultar(autores.get(i));
 			}
 		}
 	}

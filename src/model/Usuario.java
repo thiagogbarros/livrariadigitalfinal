@@ -17,7 +17,8 @@ import javax.persistence.InheritanceType;
 public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
+	
 	@Column
 	private String cpf;
 	@Column
@@ -30,7 +31,7 @@ public class Usuario implements Serializable {
 	private String telefone;
 	@Column
 	private String cep;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	public void setId(int id) {

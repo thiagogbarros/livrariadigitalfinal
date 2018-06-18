@@ -63,8 +63,6 @@ public class EditorasController {
 		}catch(Exception e) {
 			EditoraView.Mensagens("naoEncontrado");
 		}
-		
-
 	}
 	
 	public void Consultar() {

@@ -8,13 +8,13 @@ import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "autor")
-public class Autor {
+public class Autor{
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Column
 	private String nome;
-	
 	public int getId() {
 		return id;
 	}
@@ -25,8 +25,9 @@ public class Autor {
 		return nome;
 	}
 	public void setNome(String nome) {
-		
 		this.nome = nome;
 	}
+	
+
 	
 }
