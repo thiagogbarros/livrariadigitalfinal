@@ -23,26 +23,30 @@ public class GenerosController {
 		em = emf.createEntityManager();
 	}
 	
-	public void Salvar(Genero genero) {
-		em.getTransaction().begin();
-		em.persist(genero);
-		em.getTransaction().commit();
-		emf.close();
-	}
-	
 	public void Deletar() {
 		em.getTransaction().begin();
-		Query q = em.createNativeQuery("delete from genero where nome = '"+GeneroView.Deletar()+"'");
-		q.executeUpdate();
-		//em.find(arg0, arg1)
-		em.getTransaction().commit();
-		emf.close();
+		try {
+			Query q = em.createNativeQuery("select id from genero where nome = '"+GeneroView.Deletar()+"'");
+			//q.executeUpdate();
+			Genero genero = em.find(Genero.class, q.getSingleResult());
+			em.remove(genero);
+			em.getTransaction().commit();
+			emf.close();
+			GeneroView.Mensagens("deletado");
+		}catch(Exception e) {
+			GeneroView.Mensagens("naoEncontrado");
+		}
+
 	}
 	
 	public void Criar() {
 		Genero genero = new Genero();
 		genero.setNome(GeneroView.Criar());
-		this.Salvar(genero);
+		em.getTransaction().begin();
+		em.persist(genero);
+		em.getTransaction().commit();
+		emf.close();
+		GeneroView.Mensagens("cadastrado");
 	}
 	
 	public void Alterar() {
@@ -52,13 +56,14 @@ public class GenerosController {
 			int idEncontrado = (int) q.getSingleResult();
 			Genero encontrado = em.find(Genero.class, idEncontrado);
 			encontrado.setNome(GeneroView.Alterar(2));
-			//encontrado.setNome(GeneroView.Alterar(2));
 			em.merge(encontrado);
 			em.getTransaction().commit();
 			emf.close();
+			GeneroView.Mensagens("alterado");
 		}catch(Exception e) {
-			System.out.println("Genero não encontrado");
+			GeneroView.Mensagens("naoEncontrado");
 		}
+		
 
 	}
 	
@@ -68,10 +73,13 @@ public class GenerosController {
 		List<Genero> generos = query.getResultList();
 		em.getTransaction().commit();
 		emf.close();
-		for (int i = 0;i < generos.size(); i++) {
-			GeneroView.Consultar(generos.get(i));
+		if(generos.isEmpty()) {
+			GeneroView.Mensagens("naoCadastrado");
+		}else {
+			for (int i = 0;i < generos.size(); i++) {
+				GeneroView.Consultar(generos.get(i));
+			}
 		}
-
 	}
 	
 }
