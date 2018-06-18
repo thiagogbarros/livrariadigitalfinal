@@ -5,18 +5,19 @@ import model.Genero;
 
 
 public class GeneroView {
-	public static String Criar() {
+	public static Genero Criar() {
 		Scanner sc = new Scanner(System.in);
+		Genero genero = new Genero();
 		System.out.println("Digite o nome do gênero a ser cadastrado");
-		String nome = sc.nextLine();
-		return(nome);
+		genero.setNome(sc.nextLine());
+		return(genero);
 	}
 	
-	public static String Deletar() {
+	public static int Deletar() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Digite o nome do gênero que deseja deletar");
-		String nome = sc.nextLine();
-		return(nome);
+		System.out.println("Digite o id do gênero que deseja deletar");
+		int id = sc.nextInt();
+		return(id);
 	}
 	
 	public static String Alterar(int parte) {

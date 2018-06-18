@@ -1,54 +1,80 @@
 package view;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Usuario;
 
+
 public class UsuarioView {
-	
-	public static String criarUsuario() {
+	public static Usuario Criar() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Informe o nome do usuario a ser criado: ");
-		String nome = sc.nextLine();
-		return nome;	
+		Usuario usuario = new Usuario();
+		System.out.println("Digite o nome do usuario a ser cadastrado");
+		usuario.setNome(sc.nextLine());
+        System.out.println("Digite o cpf do usuario a ser cadastrado");
+		usuario.setCpf(sc.nextInt());
+		System.out.println("Digite o cep do usuario a ser cadastrado");
+		usuario.setCep(sc.nextInt());
+		System.out.println("Digite o telefone do usuario a ser cadastrado");
+		usuario.setTelefone(sc.nextInt());
+		System.out.println("Digite o idade do usuario a ser cadastrado");
+		usuario.setIdade(sc.nextInt());
+		System.out.println("Digite o endereço do usuario a ser cadastrado");
+		usuario.setEndereco(sc.nextLine());
+		return(usuario);
 	}
 	
-	public static String excluir() {
+	public static int Deletar() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Informe o nome a ser excluido: ");
-		String nome = sc.nextLine();
-		return nome;
+		System.out.println("Digite o id do usuario que deseja deletar");
+		int id = sc.nextInt();
+		return(id);
 	}
 	
-	public void consultarPerfil() {
+	public static Usuario Alterar(int parte) {
 		Scanner sc = new Scanner(System.in);
-		int idbusca;
-		System.out.println("Informe seu ID: ");
-		idbusca = sc.nextInt();
-		//BUSCA NO BANCO DE DADOS, IMPLEMENTAR DE ACORDO COM O BD
-		System.out.printf("CPF: \n",this.getCpf());
-		System.out.printf("NOME: \n",this.getNome());
-		System.out.printf("IDADE: \n",this.getIdade());
-		System.out.printf("ENDERECO: \n",this.getEndereco());
-		System.out.printf("TELEFONE: \n",this.getTelefone());
-		System.out.printf("CEP: \n",this.getCep());
+		Usuario usuario = new Usuario();
+		if(parte == 1) {
+			System.out.println("Digite o nome do usuario que deseja ser alterado");
+			usuario.setNome(sc.nextLine());
+			return(usuario);
+		}else {
+			System.out.println("Digite o nome do usuario a ser cadastrado");
+			usuario.setNome(sc.nextLine());
+	        System.out.println("Digite o cpf do usuario a ser cadastrado");
+			usuario.setCpf(sc.nextInt());
+			System.out.println("Digite o cep do usuario a ser cadastrado");
+			usuario.setCep(sc.nextInt());
+			System.out.println("Digite o telefone do usuario a ser cadastrado");
+			usuario.setTelefone(sc.nextInt());
+			System.out.println("Digite o idade do usuario a ser cadastrado");
+			usuario.setIdade(sc.nextInt());
+			System.out.println("Digite o endereço do usuario a ser cadastrado");
+			usuario.setEndereco(sc.nextLine());
+			return(usuario);
+		
+		}
 	}
 	
-	public void editarPerfil() {
-		Scanner sc = new Scanner(System.in);
-		System.out.printf("CPF: \n");
-		this.setCpf(sc.nextInt());	
-		System.out.printf("NOME: \n");
-		this.setNome(sc.next());
-		System.out.printf("IDADE: \n");
-		this.setCpf(sc.nextInt());
-		System.out.printf("ENDERECO: \n");
-		this.setEndereco(sc.next());
-		System.out.printf("TELEFONE: \n");
-		this.setTelefone(sc.nextInt());
-		System.out.printf("CEP: \n");
-		this.setCep(sc.nextInt());
-		sc.close();
+	public static void Consultar(Usuario usuario) {
+		System.out.println("Nome: "+usuario.getNome());
+		System.out.println("Cpf: "+usuario.getCpf());
+		System.out.println("Cep: "+usuario.getCep());
+		System.out.println("Telefone: "+usuario.getTelefone());
+		System.out.println("Idade: "+usuario.getIdade());
+		System.out.println("Endereço: "+usuario.getEndereco());
 	}
 	
+	public static void Mensagens(String tipo) {
+		switch(tipo) {
+		case "naoEncontrado":	System.out.println("Usuario não encontrado!");
+								break;
+		case "naoCadastrado":	System.out.println("Não existem usuarios cadastrados!");
+								break;
+		case "cadastrado":	System.out.println("Usuario cadastrado com sucesso!");
+							break;
+		case "deletado":	System.out.println("Usuario deletado com sucesso!");
+							break;
+		case "alterado":	System.out.println("Usuario alterado com sucesso!");
+		}
+	}
 }

@@ -26,8 +26,9 @@ public class GenerosController {
 	public void Deletar() {
 		em.getTransaction().begin();
 		try {
-			Query q = em.createNativeQuery("select id from genero where nome = '"+GeneroView.Deletar()+"'");
-			Genero genero = em.find(Genero.class, q.getSingleResult());
+			//Query q = em.createNativeQuery("select id from genero where nome = '"+GeneroView.Deletar()+"'");
+			//Genero genero = em.find(Genero.class, q.getSingleResult());
+			Genero genero = em.find(Genero.class, GeneroView.Deletar());
 			em.remove(genero);
 			em.getTransaction().commit();
 			emf.close();
@@ -39,8 +40,7 @@ public class GenerosController {
 	}
 	
 	public void Criar() {
-		Genero genero = new Genero();
-		genero.setNome(GeneroView.Criar());
+		Genero genero = GeneroView.Criar();
 		em.getTransaction().begin();
 		em.persist(genero);
 		em.getTransaction().commit();

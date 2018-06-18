@@ -1,12 +1,37 @@
 package model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
 
+@Entity
+@Table(name = "usuario")
 public class Usuario {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@Column
 	private int cpf;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	@Column
 	private String nome;
+	@Column
 	private int idade;
+	@Column
 	private String endereco;
+	@Column
 	private int telefone;
+	@Column
 	private int cep;
+	
+	
 	public int getCpf() {
 		return cpf;
 	}
