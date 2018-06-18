@@ -7,7 +7,7 @@ public class Main {
 		//gcontroller.Criar();
 		//gcontroller.Deletar();
 		//gcontroller.Alterar();
-		gcontroller.Consultar();
+		//gcontroller.Consultar();
 	}
 
 }

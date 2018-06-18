@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 
@@ -13,6 +14,7 @@ import model.Genero;
 import view.GeneroView;
 
 public class GenerosController {
+	@PersistenceContext
 	EntityManagerFactory emf;
 	EntityManager em;
 	
@@ -61,10 +63,14 @@ public class GenerosController {
 	}
 	
 	public void Consultar() {
-		//em.getTransaction().begin();
-		Query q = em.createNativeQuery("select g from genero as g");
-		//Não está funcionando
-		//q.getResultList();
+		em.getTransaction().begin();  
+		Query query = em.createQuery("select g from Genero g");
+		List<Genero> generos = query.getResultList();
+		em.getTransaction().commit();
+		emf.close();
+		for (int i = 0;i < generos.size(); i++) {
+			GeneroView.Consultar(generos.get(i));
+		}
 
 	}
 	

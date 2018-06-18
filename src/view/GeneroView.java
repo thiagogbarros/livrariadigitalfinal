@@ -1,6 +1,8 @@
 package view;
 import java.util.Scanner;
 
+import model.Genero;
+
 
 public class GeneroView {
 	public static String Criar() {
@@ -29,5 +31,9 @@ public class GeneroView {
 			return(nome);
 		
 		}
+	}
+	
+	public static void Consultar(Genero genero) {
+		System.out.println("Nome: "+genero.getNome());
 	}
 }
