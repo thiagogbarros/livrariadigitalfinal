@@ -2,8 +2,6 @@ package model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -21,13 +19,7 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Column
-	private int cpf;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private String cpf;
 	@Column
 	private String nome;
 	@Column
@@ -35,15 +27,19 @@ public class Usuario implements Serializable {
 	@Column
 	private String endereco;
 	@Column
-	private int telefone;
+	private String telefone;
 	@Column
-	private int cep;
-	
-	
-	public int getCpf() {
+	private String cep;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	public String getNome() {
@@ -64,17 +60,18 @@ public class Usuario implements Serializable {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
+
 	
 }
