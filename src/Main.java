@@ -11,7 +11,7 @@ public class Main {
 		//gcontroller.Deletar();
 		//gcontroller.Alterar();
 		//gcontroller.Consultar();
-		ucontroller.Criar();
+		//ucontroller.Criar();
 		//ucontroller.Consultar();
 		//ucontroller.Deletar();
 		//ucontroller.Alterar();

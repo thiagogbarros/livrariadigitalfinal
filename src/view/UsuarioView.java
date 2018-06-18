@@ -18,7 +18,6 @@ public class UsuarioView {
 		usuario.setCep(sc.nextInt());
 		System.out.println("Digite o telefone do usuario a ser cadastrado");
 		usuario.setTelefone(sc.nextInt());
-
 		System.out.println("Digite o idade do usuario a ser cadastrado");
 		usuario.setIdade(sc.nextInt());
 		return(usuario);
@@ -41,6 +40,8 @@ public class UsuarioView {
 		}else {
 			System.out.println("Digite o nome do usuario a ser cadastrado");
 			usuario.setNome(sc.nextLine());
+			System.out.printf("Digite o endereço do usuario a ser cadastrado \n");
+			usuario.setEndereco(sc.nextLine());
 	        System.out.println("Digite o cpf do usuario a ser cadastrado");
 			usuario.setCpf(sc.nextInt());
 			System.out.println("Digite o cep do usuario a ser cadastrado");
@@ -49,8 +50,6 @@ public class UsuarioView {
 			usuario.setTelefone(sc.nextInt());
 			System.out.println("Digite o idade do usuario a ser cadastrado");
 			usuario.setIdade(sc.nextInt());
-			System.out.println("Digite o endereço do usuario a ser cadastrado");
-			usuario.setEndereco(sc.nextLine());
 			return(usuario);
 		
 		}
@@ -62,7 +61,7 @@ public class UsuarioView {
 		System.out.println("Cep: "+usuario.getCep());
 		System.out.println("Telefone: "+usuario.getTelefone());
 		System.out.println("Idade: "+usuario.getIdade());
-		System.out.println("Endereço: "+usuario.getEndereco());
+		System.out.println("Endereço: "+usuario.getEndereco()+"\n");
 	}
 	
 	public static void Mensagens(String tipo) {

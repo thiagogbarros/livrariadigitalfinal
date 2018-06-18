@@ -1,14 +1,22 @@
 package model;
+import java.io.Serializable;
+
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.InheritanceType;
+
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
