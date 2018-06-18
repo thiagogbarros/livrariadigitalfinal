@@ -8,22 +8,21 @@ import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "editora")
-
 public class Editora {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idEditora;
+	private int id;
 	@Column
 	private String nome;
 	@Column
 	private String telefone;
 
 
-	public int getidEditora() {
-		return idEditora;
+	public int getId() {
+		return id;
 	}
-	public void setidEditora(int idEditora) {
-		this.idEditora = idEditora;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;

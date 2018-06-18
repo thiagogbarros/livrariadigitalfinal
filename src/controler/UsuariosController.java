@@ -53,8 +53,6 @@ public class UsuariosController {
 		Query q = em.createNativeQuery("select id from usuario where nome = '"+UsuarioView.Alterar(1).getNome()+"'");
 		try {
 			int idEncontrado = (int) q.getSingleResult();
-			//Usuario encontrado = em.find(Usuario.class, idEncontrado);
-			//encontrado.setNome(UsuarioView.Alterar(2));
 			Usuario encontrado = UsuarioView.Alterar(2);
 			encontrado.setId(idEncontrado);
 			em.merge(encontrado);
