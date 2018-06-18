@@ -6,6 +6,24 @@ import model.Usuario;
 
 public class UsuarioView {
 	public static Usuario Criar() {
+
+		System.out.println("USUARIO: Criando...");
+		Scanner sc = new Scanner(System.in);
+		Usuario usuario = new Usuario();
+		System.out.println("NOME:");
+		usuario.setNome(sc.nextLine());
+		System.out.printf("ENDEREÇO:");
+		usuario.setEndereco(sc.nextLine());
+        System.out.println("CPF:");
+		usuario.setCpf(sc.nextLine());
+		System.out.println("CEP:");
+		usuario.setCep(sc.nextLine());
+		System.out.println("TELEFONE:");
+		usuario.setTelefone(sc.nextLine());
+		System.out.println("IDADE:");
+		usuario.setIdade(sc.nextInt());
+		return(usuario);
+		/*
 		Scanner sc = new Scanner(System.in);
 		Usuario usuario = new Usuario();
 		System.out.println("Digite o nome do usuario a ser cadastrado");
@@ -20,7 +38,7 @@ public class UsuarioView {
 		usuario.setTelefone(sc.nextLine());
 		System.out.println("Digite o idade do usuario a ser cadastrado");
 		usuario.setIdade(sc.nextInt());
-		return(usuario);
+		return(usuario);*/
 	}
 	
 	public static int Deletar() {
@@ -34,24 +52,24 @@ public class UsuarioView {
 		Scanner sc = new Scanner(System.in);
 		Usuario usuario = new Usuario();
 		if(parte == 1) {
-			System.out.println("Digite o nome do usuario que deseja ser alterado");
+			System.out.println("Digite o nome do usuario que deseja ser alterado:");
 			usuario.setNome(sc.nextLine());
 			return(usuario);
 		}else {
-			System.out.println("Digite o nome do usuario a ser cadastrado");
+
+			System.out.println("NOVO NOME:");
 			usuario.setNome(sc.nextLine());
-			System.out.printf("Digite o endereço do usuario a ser cadastrado \n");
+			System.out.printf("NOVO ENDEREÇO:");
 			usuario.setEndereco(sc.nextLine());
-	        System.out.println("Digite o cpf do usuario a ser cadastrado \n");
+	        System.out.println("NOVO CPF:");
 			usuario.setCpf(sc.nextLine());
-			System.out.println("Digite o cep do usuario a ser cadastrado \n");
+			System.out.println("NOVO CEP:");
 			usuario.setCep(sc.nextLine());
-			System.out.println("Digite o telefone do usuario a ser cadastrado \n");
+			System.out.println("NOVO TELEFONE:");
 			usuario.setTelefone(sc.nextLine());
-			System.out.println("Digite o idade do usuario a ser cadastrado");
+			System.out.println("NOVA IDADE:");
 			usuario.setIdade(sc.nextInt());
 			return(usuario);
-		
 		}
 	}
 	

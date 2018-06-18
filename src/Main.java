@@ -23,8 +23,8 @@ public class Main {
 		//econtroller.Criar();
 		//econtroller.Consultar();
 		//econtroller.Deletar();
-		econtroller.Alterar();
-		//econtroller.Consultar();
+		//econtroller.Alterar();
+		econtroller.Consultar();
 	}
 
 }

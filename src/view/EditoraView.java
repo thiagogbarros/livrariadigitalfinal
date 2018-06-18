@@ -1,13 +1,22 @@
 
 package view;
 import model.Editora;
-import model.Genero;
 
 import java.util.Scanner;
 
 public class EditoraView {
 	
 	public static Editora Criar() {
+		
+		System.out.println("EDITORA: criando...\n");	//TITULO DA TELA
+		Scanner sc = new Scanner(System.in);
+		Editora editora = new Editora();
+		System.out.println("NOME:");
+		editora.setNome(sc.nextLine());
+		System.out.println("TELEFONE:");
+		editora.setTelefone(sc.nextLine());
+		return(editora);
+		/*
 		System.out.println("EDITORA: criando... \n");	//TITULO DA TELA
 		Scanner sc = new Scanner(System.in);
 		Editora editora = new Editora();
@@ -15,7 +24,7 @@ public class EditoraView {
 		editora.setNome(sc.nextLine());
 		System.out.println("Digite o telefone da editora a ser cadastrada");
 		editora.setTelefone(sc.nextLine());
-		return(editora);
+		return(editora);*/
 	}
 	public static int Deletar() {
 		System.out.println("EDITORA: deletando...");	//TITULO DA TELA
@@ -34,19 +43,25 @@ public class EditoraView {
 			editora.setNome(sc.nextLine());
 			return(editora);
 		}else {
+			System.out.println("NOVO NOME:");
+			editora.setNome(sc.nextLine());
+			System.out.println("NOVO TELEFONE:");
+			editora.setTelefone(sc.nextLine());
+			return(editora);
+			/*
 			System.out.println("Digite o nome da editora a ser cadastrada");
 			editora.setNome(sc.nextLine());
 			System.out.println("Digite o telefone da editora a ser cadastrada \n");
 			editora.setTelefone(sc.nextLine());
-			return(editora);
+			return(editora);*/
 		
 		}
 	}
 	
 	public static void Consultar(Editora editora) {
-		System.out.println("Nome: "+editora.getNome());
 		System.out.println("ID da Editora: "+editora.getId());
-		System.out.println("Telefone: "+editora.getTelefone());
+		System.out.println("Nome: "+editora.getNome());
+		System.out.println("Telefone: "+editora.getTelefone()+"\n");
 	}
 
 	public static void Mensagens(String tipo) {
