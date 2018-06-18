@@ -27,7 +27,6 @@ public class GenerosController {
 		em.getTransaction().begin();
 		try {
 			Query q = em.createNativeQuery("select id from genero where nome = '"+GeneroView.Deletar()+"'");
-			//q.executeUpdate();
 			Genero genero = em.find(Genero.class, q.getSingleResult());
 			em.remove(genero);
 			em.getTransaction().commit();
