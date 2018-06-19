@@ -1,37 +1,54 @@
 package view;
 import java.util.Scanner;
-//import model.Livro;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+
+import model.Autor;
+import model.Editora;
+import model.Genero;
+import model.Livro;
 
 
 public class LivroView {
-/*	public static Livro Criar() {
+	public static Livro Criar(EntityManagerFactory emf,EntityManager em) {
 		System.out.println("LIVRO: Criando...");
 		Scanner sc = new Scanner(System.in);
 		Livro livro = new Livro();
+		System.out.println("TITULO:");
+		livro.setTitulo(sc.nextLine());
 		System.out.println("ISBN:");
 		livro.setIsbn(sc.nextInt());
-		System.out.printf("TITULO:");
-		livro.setTitulo(sc.nextLine());
-		System.out.printf("NOME DO AUTOR:");
-		livro.setAutor(sc.nextLine());
-		System.out.printf("EDITORA:");
-		livro.setEditora(sc.nextLine());
+		System.out.println("PREÇO:");
+		livro.setPreco(sc.nextInt());
+		System.out.printf("ID DO AUTOR:");
+		em.getTransaction().begin();
+		Autor autor = em.find(Autor.class, sc.nextInt());
+		livro.setAutor(autor);
+		System.out.printf("ID EDITORA:");
+		Editora editora = em.find(Editora.class, sc.nextInt());
+		livro.setEditora(editora);
 		System.out.printf("ANO DE LANÇAMENTO:");
 		livro.setAno(sc.nextInt());
-		System.out.printf("PREÇO:");
-		livro.setPreco(sc.nextFloat());
-     return(livro);
+		System.out.printf("ID GENERO:");
+		Genero genero = em.find(Genero.class, sc.nextInt());
+		livro.setGenero(genero);
+		em.getTransaction().commit();
+		emf.close();
+		return(livro);
 	}
 	
-	public static int Deletar() {
+	public static long Deletar() {
 		System.out.println("LIVRO: Deletando...");
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o id do livro que deseja deletar");
-		int id = sc.nextInt();
+		long id = sc.nextInt();
 		return(id);
 	}
 	
-	public static Livro Alterar(int parte) {
+	public static Livro Alterar(int parte,EntityManagerFactory emf,EntityManager em) {
 		System.out.println("LIVRO: Alterando...");
 		Scanner sc = new Scanner(System.in);
 		Livro livro = new Livro();
@@ -40,18 +57,23 @@ public class LivroView {
 			livro.setTitulo(sc.nextLine());
 			return(livro);
 		}else {
+			System.out.println("NOVO TITULO:");
+			livro.setTitulo(sc.nextLine());
 			System.out.println("NOVO ISBN: ");
 			livro.setIsbn(sc.nextInt());
-			System.out.printf("NOVO TITULO:");
-			livro.setTitulo(sc.nextLine());
-			System.out.printf("NOVO NOME DO AUTOR:");
-			livro.setAutor(sc.nextLine());
-			System.out.printf("NOVA EDITORA:");
-			livro.setEditora(sc.nextLine());
+			System.out.printf("NOVO AUTOR(id):");
+			Autor autor = em.find(Autor.class, sc.nextInt());
+			livro.setAutor(autor);
+			System.out.printf("NOVA EDITORA(id):");
+			Editora editora = em.find(Editora.class, sc.nextInt());
+			livro.setEditora(editora);
 			System.out.printf("NOVO ANO DE LANÇAMENTO:");
 			livro.setAno(sc.nextInt());
 			System.out.printf("NOVO PREÇO:");
-			livro.setPreco(sc.nextFloat());
+			livro.setPreco(sc.nextInt());
+			System.out.printf("NOVO GENERO(id):");
+			Genero genero = em.find(Genero.class, sc.nextInt());
+			livro.setGenero(genero);
 			return(livro);
 		
 		}
@@ -65,6 +87,7 @@ public class LivroView {
 		System.out.println("Editora:"+livro.getEditora());
 		System.out.println("Ano de Lançamento:"+livro.getAno());	
 		System.out.println("Preço: "+livro.getPreco());	
+		System.out.println("Genero:"+livro.getGenero());
 	}
 	
 	public static void Mensagens(String tipo) {
@@ -80,5 +103,4 @@ public class LivroView {
 		case "alterado":	System.out.println("Livro alterado com sucesso!");
 		}
 	}
-	*/
 }

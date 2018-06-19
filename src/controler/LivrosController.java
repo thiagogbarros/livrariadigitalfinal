@@ -8,57 +8,55 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import model.Livro;
+import view.LivroView;
 
-
-import model.Usuario;
-import view.UsuarioView;
-
-public class UsuariosController {
+public class LivrosController {
 	@PersistenceContext
 	EntityManagerFactory emf;
 	EntityManager em;
 	
-	public UsuariosController() {
-		emf = Persistence.createEntityManagerFactory("usuario");
+	public LivrosController() {
+		emf = Persistence.createEntityManagerFactory("livro");
 		em = emf.createEntityManager();
 	}
-	
 	public void Deletar() {
 		em.getTransaction().begin();
 		try {
-			Usuario usuario = em.find(Usuario.class, UsuarioView.Deletar());
-			em.remove(usuario);
+			Livro livro = em.find(Livro.class, LivroView.Deletar());
+			em.remove(livro);
 			em.getTransaction().commit();
 			emf.close();
-			UsuarioView.Mensagens("deletado");
+			LivroView.Mensagens("deletado");
 		}catch(Exception e) {
-			UsuarioView.Mensagens("naoEncontrado");
+			System.out.printf("exception "+e);
+			LivroView.Mensagens("naoEncontrado");
 		}
 
 	}
 	
 	public void Criar() {
-		Usuario usuario = UsuarioView.Criar();
+		Livro livro = LivroView.Criar(emf,em);
 		em.getTransaction().begin();
-		em.persist(usuario);
+		em.persist(livro);
 		em.getTransaction().commit();
 		emf.close();
-		UsuarioView.Mensagens("cadastrado");
+		LivroView.Mensagens("cadastrado");
 	}
 	
 	public void Alterar() {
 		em.getTransaction().begin();
-		Query q = em.createNativeQuery("select id from usuario where nome = '"+UsuarioView.Alterar(1).getNome()+"'");
+		Query q = em.createNativeQuery("select id from livro where titulo = '"+LivroView.Alterar(1,emf,em).getTitulo()+"'");
 		try {
 			int idEncontrado = (int) q.getSingleResult();
-			Usuario encontrado = UsuarioView.Alterar(2);
+			Livro encontrado = LivroView.Alterar(2,emf,em);
 			encontrado.setId(idEncontrado);
 			em.merge(encontrado);
 			em.getTransaction().commit();
 			emf.close();
-			UsuarioView.Mensagens("alterado");
+			LivroView.Mensagens("alterado");
 		}catch(Exception e) {
-			UsuarioView.Mensagens("naoEncontrado");
+			LivroView.Mensagens("naoEncontrado");
 		}
 		
 
@@ -66,15 +64,15 @@ public class UsuariosController {
 	
 	public void Consultar() {
 		em.getTransaction().begin();  
-		Query query = em.createQuery("select g from Usuario g");
-		List<Usuario> usuarios = query.getResultList();
+		Query query = em.createQuery("select g from Livro g");
+		List<Livro> livros = query.getResultList();
 		em.getTransaction().commit();
 		emf.close();
-		if(usuarios.isEmpty()) {
-			UsuarioView.Mensagens("naoCadastrado");
+		if(livros.isEmpty()) {
+			LivroView.Mensagens("naoCadastrado");
 		}else {
-			for (int i = 0;i < usuarios.size(); i++) {
-				UsuarioView.Consultar(usuarios.get(i));
+			for (int i = 0;i < livros.size(); i++) {
+				LivroView.Consultar(livros.get(i));
 			}
 		}
 	}

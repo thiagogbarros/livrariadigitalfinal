@@ -19,15 +19,13 @@ public class AutoresController {
 	EntityManager em;
 	
 	public AutoresController() {
-		emf = Persistence.createEntityManagerFactory("genero");
+		emf = Persistence.createEntityManagerFactory("autor");
 		em = emf.createEntityManager();
 	}
 	
 	public void Deletar() {
 		em.getTransaction().begin();
 		try {
-			//Query q = em.createNativeQuery("select id from genero where nome = '"+AutorView.Deletar()+"'");
-			//Autor genero = em.find(Autor.class, q.getSingleResult());
 			Autor genero = em.find(Autor.class, AutorView.Deletar());
 			em.remove(genero);
 			em.getTransaction().commit();
