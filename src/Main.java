@@ -18,7 +18,7 @@ public class Main {
 		FuncionariosController fcontroller = new FuncionariosController();
 
 
-		//gcontroller.Criar();
+		gcontroller.Criar();
 		//gcontroller.Consultar();
 		//gcontroller.Deletar();
 		//gcontroller.Alterar();
