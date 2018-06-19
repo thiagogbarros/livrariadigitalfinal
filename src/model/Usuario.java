@@ -15,6 +15,9 @@ import javax.persistence.InheritanceType;
 @Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = -8538392441542149157L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;

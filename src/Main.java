@@ -1,5 +1,7 @@
 import controler.AutoresController;
+import controler.ClientesController;
 import controler.EditorasController;
+import controler.FuncionariosController;
 import controler.GenerosController;
 import controler.LivrosController;
 import controler.UsuariosController;
@@ -12,6 +14,8 @@ public class Main {
 		EditorasController econtroller = new EditorasController();
 		AutoresController acontroller = new AutoresController();
 		LivrosController lcontroller = new LivrosController();
+		ClientesController ccontroller = new ClientesController();
+		FuncionariosController fcontroller = new FuncionariosController();
 
 
 		//gcontroller.Criar();
@@ -35,9 +39,19 @@ public class Main {
 		//acontroller.Alterar();
 		
 		//lcontroller.Criar();
-		lcontroller.Consultar();
+		//lcontroller.Consultar();
 		//lcontroller.Deletar();
 		//lcontroller.Alterar();
+		
+		//ccontroller.Criar();
+		//ccontroller.Consultar();
+		//ccontroller.Deletar();
+		//ccontroller.Alterar();
+		
+		//fcontroller.Criar();
+		//fcontroller.Consultar();
+		//fcontroller.Deletar();
+		//fcontroller.Alterar();
 	}
 
 }
