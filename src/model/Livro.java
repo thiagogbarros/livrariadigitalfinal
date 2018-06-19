@@ -39,6 +39,8 @@ public class Livro implements Serializable {
 	private int ano;
 	@Column
 	private int preco;
+	
+	
 	public long getId() {
 		return id;
 	}

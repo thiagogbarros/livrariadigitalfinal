@@ -23,22 +23,6 @@ public class UsuarioView {
 		System.out.println("IDADE:");
 		usuario.setIdade(sc.nextInt());
 		return(usuario);
-		/*
-		Scanner sc = new Scanner(System.in);
-		Usuario usuario = new Usuario();
-		System.out.println("Digite o nome do usuario a ser cadastrado");
-		usuario.setNome(sc.nextLine());
-		System.out.printf("Digite o endereço do usuario a ser cadastrado \n");
-		usuario.setEndereco(sc.nextLine());
-        System.out.println("Digite o cpf do usuario a ser cadastrado \n");
-		usuario.setCpf(sc.nextLine());
-		System.out.println("Digite o cep do usuario a ser cadastrado \n");
-		usuario.setCep(sc.nextLine());
-		System.out.println("Digite o telefone do usuario a ser cadastrado \n");
-		usuario.setTelefone(sc.nextLine());
-		System.out.println("Digite o idade do usuario a ser cadastrado");
-		usuario.setIdade(sc.nextInt());
-		return(usuario);*/
 	}
 	
 	public static int Deletar() {

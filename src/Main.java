@@ -1,10 +1,12 @@
 import controler.AutoresController;
+import controler.CarrinhosController;
 import controler.ClientesController;
 import controler.EditorasController;
 import controler.FuncionariosController;
 import controler.GenerosController;
 import controler.LivrosController;
 import controler.UsuariosController;
+import view.NavegacaoView;
 
 public class Main {
 
@@ -16,9 +18,13 @@ public class Main {
 		LivrosController lcontroller = new LivrosController();
 		ClientesController ccontroller = new ClientesController();
 		FuncionariosController fcontroller = new FuncionariosController();
+		CarrinhosController cacontroller = new CarrinhosController();
 
+		//NavegacaoView menu = new NavegacaoView();
+		
+		//menu.telaInicial();
 
-		gcontroller.Criar();
+		//gcontroller.Criar();
 		//gcontroller.Consultar();
 		//gcontroller.Deletar();
 		//gcontroller.Alterar();
@@ -52,6 +58,11 @@ public class Main {
 		//fcontroller.Consultar();
 		//fcontroller.Deletar();
 		//fcontroller.Alterar();
+		
+		//cacontroller.Criar();
+		cacontroller.Consultar();
+		//cacontroller.Deletar();
+		//cacontroller.Alterar();
 	}
 
 }

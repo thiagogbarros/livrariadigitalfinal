@@ -1,10 +1,13 @@
 package view;
 
 import model.Livro;
-import model.Usuario;
 import model.Carrinho;
+import model.Cliente;
 
 import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 public class CarrinhoView {
 	
 	public static Livro addLivro() {
@@ -22,30 +25,65 @@ public class CarrinhoView {
 		int id = sc.nextInt();
 		return id;
 	}
-	//CRIAR METODO ESVAZIAR CARRINHO
-	//CRIAR METODO FINALIZAR COMPRA
 
 	public static void Consultar(Carrinho carrinho) {
 		System.out.println("Carrinho: Consultando...");
 		System.out.println("ID: "+carrinho.getId());
-		System.out.println("IDCliente: "+carrinho.getIdCliente());
-		//NO CASO TERIA Q LISTAR OS LIVROS Q TAO NO CARRINHO?
-		//System.out.println("Livros no carrinho: 1)___ 2) ____ ...");
+		System.out.println("Nome do Cliente: "+carrinho.getCliente());
+
 		
 	}
+	public static Carrinho Criar(EntityManagerFactory emf,EntityManager em) {
+
+		System.out.println("CARRINHO: Criando...");
+		Scanner sc = new Scanner(System.in);
+		Carrinho carrinho = new Carrinho();
+		System.out.println("Digite o id do livro ser adicionado ");
+		long id = sc.nextInt();
+		Livro livro = em.find(Livro.class,id);
+		carrinho.setLivro(livro);
+		System.out.printf("Digite o id do cliente a ser associado:");
+		id = sc.nextLong();
+		Cliente cliente = em.find(Cliente.class,id);
+		carrinho.setCliente(cliente);
+		return(carrinho);
+	}
 	
-	/*public static void Mensagens(String tipo) {
-		switch(tipo) {
-		case "naoEncontrado":	System.out.println("Usuario não encontrado!");
-								break;
-		case "naoCadastrado":	System.out.println("Não existem usuarios cadastrados!");
-								break;
-		case "cadastrado":	System.out.println("Usuario cadastrado com sucesso!");
-							break;
-		case "deletado":	System.out.println("Usuario deletado com sucesso!");
-							break;
-		case "alterado":	System.out.println("Usuario alterado com sucesso!");
+	public static int Deletar() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Digite o id do carrinho que deseja limpar");
+		int id = sc.nextInt();
+		return(id);
+	}
+	
+	public static Carrinho Alterar(int parte,EntityManagerFactory emf,EntityManager em) {
+		Scanner sc = new Scanner(System.in);
+		Carrinho carrinho = new Carrinho();
+		if(parte == 1) {
+			System.out.println("Digite o id do carrinho que deseja ser alterado:");
+			return(em.find(Carrinho.class,sc.nextLong()));
+		}else {
+
+			System.out.println("NOVO ID LIVRO:");
+			carrinho.setLivro(em.find(Livro.class, sc.nextLong()));
+			System.out.printf("NOVO ID CLIENTE:");
+			carrinho.setCliente(em.find(Cliente.class, sc.nextLong()));
+			return(carrinho);
 		}
-	}*/
+	}
+	
+	public static void Mensagens(String tipo) {
+		switch(tipo) {
+		case "naoEncontrado":	System.out.println("Carrinho não encontrado!");
+								break;
+		case "naoCadastrado":	System.out.println("Não existem carrinhos cadastrados!");
+								break;
+		case "cadastrado":	System.out.println("Carrinho cadastrado com sucesso!");
+							break;
+		case "deletado":	System.out.println("Carrinho deletado com sucesso!");
+							break;
+		case "alterado":	System.out.println("Carrinho alterado com sucesso!");
+		}
+	}
 	
 }

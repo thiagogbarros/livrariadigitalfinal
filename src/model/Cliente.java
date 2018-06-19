@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -13,6 +14,7 @@ public class Cliente extends Usuario{
 	private String login;
 	private String senha;
 	private float saldo;
+
 	
 	public Cliente() {
 		this.saldo = 0;
@@ -37,6 +39,9 @@ public class Cliente extends Usuario{
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
-	
+	@Override
+	public String toString() {
+		return "" + super.getNome() + "";
+	}
 	
 }
