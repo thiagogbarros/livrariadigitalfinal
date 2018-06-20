@@ -11,6 +11,7 @@ import view.NavegacaoView;
 public class Main {
 
 	public static void main(String[] args) {
+		/*
 		GenerosController gcontroller = new GenerosController();
 		UsuariosController ucontroller = new UsuariosController();
 		EditorasController econtroller = new EditorasController();
@@ -19,10 +20,9 @@ public class Main {
 		ClientesController ccontroller = new ClientesController();
 		FuncionariosController fcontroller = new FuncionariosController();
 		CarrinhosController cacontroller = new CarrinhosController();
-
-		//NavegacaoView menu = new NavegacaoView();
-		
-		//menu.telaInicial();
+*/
+		NavegacaoView menu = new NavegacaoView();
+		menu.telaInicial();
 
 		//gcontroller.Criar();
 		//gcontroller.Consultar();
@@ -60,7 +60,7 @@ public class Main {
 		//fcontroller.Alterar();
 		
 		//cacontroller.Criar();
-		cacontroller.Consultar();
+		//cacontroller.Consultar();
 		//cacontroller.Deletar();
 		//cacontroller.Alterar();
 	}
